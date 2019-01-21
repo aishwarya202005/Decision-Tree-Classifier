@@ -1,0 +1,30 @@
+When some attributes are missing in test sample dataset, then we will consider all the possible values which target attribute can take from
+original dataset and turn-wise predict result for each of the possible value. Then from the obtained result whichever value has the highest
+probability will be returned as the predicted value.
+
+
+example 1:
+in dataset if given attributes are: [A,B,C,D].
+At each leaf node, we calculate the number of positive results for target attribute as well as number of negative results for the same as shown in the figure as n1,n2,n3 and so on.
+
+Given missing-value test-case is :[a1,__,c1,__]
+Since the value for "B" attribute is missing, we sum up the result for all possible cases of B,(b1 and b2).
+At the next step, we have the value for "C" in the given test dataset so we will consider n1 and n2.
+Since the value for "D" attribute is missing, we consider all n5,n6,n7,n8.
+
+Finally, if positive results for target attribute are more than the negative results, then we return "TRUE" as predicted value, otherwise return "FALSE".
+
+
+example 2:
+in dataset if given attributes are: [Outlook, Temperature, Humidity, Wind, Play] and Play is the attribute for which value has to be predicted.
+Given missing-value test-case is :[rain, hot, high,__]
+ 
+Here we can see that value for "Wind" Attribute is missing and we
+found that "Wind" can take following values ["weak", "normal", "strong"]
+from Given Dataset.
+Then we'll find result for all the three possible cases i.e.
+- [overcast, hot, high, weak]
+- [overcast, hot, high, normal]
+- [overcast, hot, high, strong]
+
+Finally, if positive results for target attribute are more than the negative results, then we return "TRUE" as predicted value, otherwise return "FALSE".
